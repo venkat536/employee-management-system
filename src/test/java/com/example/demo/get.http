@@ -1,0 +1,8 @@
+### Get Employees
+GET http://localhost:8080/employees
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaGlscGEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc4MDcyNjU0NSwiZXhwIjoxNzgwNzMwMTQ1fQ.HzRmv0xdY0EaTGnSU5pHJ4OK-cLiIeraMFiLDoveBMI
+
+
+
+
+

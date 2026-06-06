@@ -1,10 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Employees</title>
+
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: lightgray;
+    }
+  </style>
+
 </head>
+
 <body>
-$END$
+
+<h2>Employee List</h2>
+
+<table id="employeeTable">
+
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Department Id</th>
+    <th>Company</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  </tbody>
+
+</table>
+
+<script>
+
+  async function loadEmployees() {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+            "http://localhost:8080/employees",
+            {
+              headers: {
+                "Authorization":
+                        "Bearer " + token
+              }
+            }
+    );
+
+    const employees =
+            await response.json();
+
+    const tableBody =
+            document.querySelector(
+                    "#employeeTable tbody"
+            );
+
+    employees.forEach(employee => {
+
+      const row =
+              document.createElement("tr");
+
+      row.innerHTML = `
+            <td>${employee.id}</td>
+            <td>${employee.name}</td>
+            <td>${employee.department}</td>
+            <td>${employee.departmentId}</td>
+            <td>${employee.companyName}</td>
+        `;
+
+      tableBody.appendChild(row);
+    });
+  }
+
+  loadEmployees();
+
+</script>
+
 </body>
 </html>

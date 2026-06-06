@@ -1,12 +1,15 @@
-package com.example.demo;
+package com.example.demo.COMPANY;
 
+import com.example.demo.CLEANINGSTAFF.CleaningStaff;
+import com.example.demo.EMPLOYEE.Employee;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name="company")
-public class Company {
+public class Company implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

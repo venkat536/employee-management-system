@@ -1,9 +1,11 @@
-package com.example.demo;
+package com.example.demo.EMPLOYEE;
 
 import com.example.demo.COMPANY.Company;
 import com.example.demo.COMPANY.CompanyRepository;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 
@@ -52,7 +54,12 @@ public class EmployeeService  {
         return response;
     }
 
+    @Cacheable("employees")
     public Employee getEmployeeById(Long id) {
+
+        System.out.println(
+                "Fetching from Database...");
+
         return employeeRepository.findById(id)
                 .orElseThrow(() ->
                         new EmployeeNotFoundException(
@@ -72,5 +79,10 @@ public class EmployeeService  {
         }
         public void  deleteEmployee(Long id){
     employeeRepository.deleteById(id);
+        }
+
+
+        public Page<Employee> getEmployees(Pageable pageable){
+        return employeeRepository.findAll(pageable);
         }
 }

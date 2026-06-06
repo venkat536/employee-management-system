@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.EMPLOYEE;
 
 public class EmployeeNotFoundException extends RuntimeException {
 

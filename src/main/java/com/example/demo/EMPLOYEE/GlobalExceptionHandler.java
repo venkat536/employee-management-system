@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.EMPLOYEE;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;

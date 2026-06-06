@@ -1,7 +1,8 @@
-package com.example.demo;
+package com.example.demo.CLEANINGSTAFF;
 
+import com.example.demo.COMPANY.Company;
 import jakarta.persistence.*;
-import java.util.List;
+
 @Entity
 @Table(name="cleaning_staff")
 public class CleaningStaff {

@@ -1,14 +1,19 @@
-package com.example.demo;
+package com.example.demo.EMPLOYEE;
 
 
 
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 @RestController
 @RequestMapping("/employees")
+@SecurityRequirement(name = "Bearer Authentication")
 public class EmployeeController {
 private final EmployeeService employeeService;
 public EmployeeController(EmployeeService employeeService){
@@ -19,7 +24,7 @@ public List<Employee> getEmployees(){
     return employeeService.getAllEmployee();
 }
 @PostMapping
-public EmployeeResponseDto saveEmployee( @Valid @RequestBody EmployeeRequestDto dto){
+public EmployeeResponseDto saveEmployee(@Valid @RequestBody EmployeeRequestDto dto){
 return employeeService.saveEmployee(dto);
 }
 @GetMapping("/{id}")
@@ -35,4 +40,13 @@ return employeeService.updateEmployee( id,employee);
 employeeService.deleteEmployee(id);
 return "Employee Deleted Successfully";
 }
+    @GetMapping("/page")
+    public Page<Employee> getEmployees(
+            Pageable pageable) {
+
+        return employeeService
+                .getEmployees(pageable);
+    }
+
+
 }

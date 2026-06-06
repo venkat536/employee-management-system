@@ -1,0 +1,10 @@
+### Login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+
+{
+  "username": "Venkat",
+  "password": "venkat",
+  "role": "USER"
+}

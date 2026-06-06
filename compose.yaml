@@ -1,1 +1,44 @@
-services: {}
+version: '3.8'
+
+services:
+
+  mysql:
+    image: mysql:latest
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: Myself@143
+      MYSQL_DATABASE: employee
+    ports:
+      - "3308:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pMyself@143" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+
+  redis:
+    image: redis:latest
+    container_name: redis-server
+    ports:
+      - "6379:6379"
+
+  app:
+    build: .
+    container_name: demo-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/employee
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Myself@143
+      SPRING_DATA_REDIS_HOST: redis-server
+      SPRING_DATA_REDIS_PORT: 6379

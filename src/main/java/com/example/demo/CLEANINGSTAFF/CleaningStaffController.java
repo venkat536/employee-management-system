@@ -1,11 +1,13 @@
-package com.example.demo;
+package com.example.demo.CLEANINGSTAFF;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/cleaning_staff")
+@SecurityRequirement(name = "Bearer Authentication")
 public class CleaningStaffController {
     private CleaningStaffService cleaningStaffService;
     public CleaningStaffController(CleaningStaffService cleaningStaffService){

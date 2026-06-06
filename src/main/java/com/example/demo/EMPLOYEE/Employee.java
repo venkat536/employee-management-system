@@ -1,13 +1,15 @@
-package com.example.demo;
+package com.example.demo.EMPLOYEE;
 
 import com.example.demo.COMPANY.Company;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name="employees")
-public class Employee {
+public class Employee implements Serializable {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
