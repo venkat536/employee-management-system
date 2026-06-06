@@ -60,6 +60,10 @@ public class SecurityConfig {
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**")
                         .permitAll()
+
+                        .requestMatchers(HttpMethod.GET,
+                                "/employees/**")
+                                .permitAll()
                         .requestMatchers("/auth/**")
                         .permitAll()
 
@@ -70,11 +74,6 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,
                                 "/employees/**")
                         .hasRole("ADMIN")
-
-                        .requestMatchers(HttpMethod.GET,
-                                "/employees/**")
-                        .hasAnyRole("ADMIN","USER")
-
                         .anyRequest()
                         .authenticated()
 

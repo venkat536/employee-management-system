@@ -1,6 +1,7 @@
 ### Get Employees
-GET http://localhost:8080/employees
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTaGlscGEiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc4MDcyNjU0NSwiZXhwIjoxNzgwNzMwMTQ1fQ.HzRmv0xdY0EaTGnSU5pHJ4OK-cLiIeraMFiLDoveBMI
+GET http://16.171.152.216:8080/employees
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJWZW5rYXQiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc4MDc2Mjk3MCwiZXhwIjoxNzgwNzY2NTcwfQ.Swls2bnugOFavqBvUS92UzAZy7ZKbv4LCfoqLAlA2fY
+
 
 
 

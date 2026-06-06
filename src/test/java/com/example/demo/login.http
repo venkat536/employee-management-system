@@ -1,5 +1,5 @@
 ### Login
-POST http://localhost:8080/auth/login
+POST http://16.171.152.216:8080/auth/login
 Content-Type: application/json
 
 
